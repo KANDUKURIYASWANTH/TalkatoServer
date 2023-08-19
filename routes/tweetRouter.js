@@ -1,0 +1,16 @@
+const router = require('express').Router()
+const tweetCtrl=require('../controllers/tweetCtrl')
+const auth=require('../middleware/auth')
+
+router.route('/tweets')
+    .post(auth, tweetCtrl.createTweet)
+    .get(auth,tweetCtrl.getTweets)
+router.patch('/tweets/:id/like',auth,tweetCtrl.likeTweet)
+router.route('/audiotweet/:id')
+    .get(auth,tweetCtrl.getTweet)
+    .delete(auth,tweetCtrl.deleteTweet)
+router.patch('/tweets/:id/unlike',auth,tweetCtrl.unLikeTweet)
+router.patch('/saveTweet/:id',auth,tweetCtrl.saveTweet)
+router.patch('/unSaveTweet/:id',auth,tweetCtrl.unSaveTweet)
+router.get('/user_tweets/:id',auth,tweetCtrl.getUserTweets)
+module.exports = router
