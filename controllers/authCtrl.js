@@ -29,7 +29,9 @@ const authCtrl={
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
                 path: '/api/refresh_token',
-                maxAge: 30*24*60*60*1000
+                maxAge: 30*24*60*60*1000,
+                secure: false, // Set to true if you want to restrict to HTTPS only
+                sameSite: 'none'
             })
             await newUser.save()
             res.json({
@@ -60,7 +62,9 @@ const authCtrl={
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
                 path: '/api/refresh_token',
-                maxAge: 30*24*60*60*1000
+                maxAge: 30*24*60*60*1000,
+                secure: false, // Set to true if you want to restrict to HTTPS only
+                sameSite: 'none'
             })
             res.json({
                 msg:'Login Success!',
@@ -117,7 +121,9 @@ const authCtrl={
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
                 path: '/api/refresh_token',
-                maxAge: 30*24*60*60*1000
+                maxAge: 30*24*60*60*1000,
+                secure: false, // Set to true if you want to restrict to HTTPS only
+                sameSite: 'none'
             })
         
             res.json({
