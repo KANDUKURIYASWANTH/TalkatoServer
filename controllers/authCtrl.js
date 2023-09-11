@@ -30,7 +30,7 @@ const authCtrl={
                 httpOnly:true,
                 path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
-                secure: false, // Set to true if you want to restrict to HTTPS only
+                secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
             })
             await newUser.save()
@@ -63,7 +63,7 @@ const authCtrl={
                 httpOnly:true,
                 path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
-                secure: false, // Set to true if you want to restrict to HTTPS only
+                secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
             })
             res.json({
@@ -122,7 +122,7 @@ const authCtrl={
                 httpOnly:true,
                 path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
-                secure: false, // Set to true if you want to restrict to HTTPS only
+                secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
             })
         
