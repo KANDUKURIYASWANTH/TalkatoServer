@@ -28,7 +28,7 @@ const authCtrl={
 
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
-                path: 'api/refresh_token',
+                path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
                 secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
@@ -61,7 +61,7 @@ const authCtrl={
 
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
-                path: 'api/refresh_token',
+                path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
                 secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
@@ -74,13 +74,15 @@ const authCtrl={
                     password:''
                 }
             })
+            console.log(access_token);
+            console.log(refresh_token);
         } catch (error) {
             return res.status(500).json({msg:error.message})
         }
     },
     logout:async(req,res)=>{
         try {
-            res.clearCookie('refresh_token',{path: 'api/refresh_token'})
+            res.clearCookie('refresh_token',{path: '/api/refresh_token'})
             return res.json({msg:'Logged out!'})
         } catch (err) {
             return res.status(500).json({msg:err.message})
@@ -88,9 +90,7 @@ const authCtrl={
     },
     generateAccessToken:async(req,res)=>{
         try {
-            console.log(req.cookies);
             const rf_token = req.cookies.refresh_token
-            console.log(rf_token);
             if(!rf_token) return res.status(400).json({msg:"Please login now."})
             jwt.verify(rf_token,process.env.REFRESH_TOKEN_SECRET,async(err,result)=>{
                 if(err) return res.status(400).json({msg:"Please login now."})
@@ -122,7 +122,7 @@ const authCtrl={
             const refresh_token = createRefreshToken({id:user._id})
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
-                path: 'api/refresh_token',
+                path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
                 secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
