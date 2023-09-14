@@ -28,7 +28,7 @@ const authCtrl={
 
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
-                path: 'https://talkatoserver.onrender.com/api/refresh_token',
+                path: 'api/refresh_token',
                 maxAge: 30*24*60*60*1000,
                 secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
@@ -61,7 +61,7 @@ const authCtrl={
 
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
-                path: 'https://talkatoserver.onrender.com/api/refresh_token',
+                path: 'api/refresh_token',
                 maxAge: 30*24*60*60*1000,
                 secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
@@ -80,7 +80,7 @@ const authCtrl={
     },
     logout:async(req,res)=>{
         try {
-            res.clearCookie('refresh_token',{path: 'https://talkatoserver.onrender.com/api/refresh_token'})
+            res.clearCookie('refresh_token',{path: 'api/refresh_token'})
             return res.json({msg:'Logged out!'})
         } catch (err) {
             return res.status(500).json({msg:err.message})
@@ -122,7 +122,7 @@ const authCtrl={
             const refresh_token = createRefreshToken({id:user._id})
             res.cookie('refresh_token',refresh_token,{
                 httpOnly:true,
-                path: 'https://talkatoserver.onrender.com/api/refresh_token',
+                path: 'api/refresh_token',
                 maxAge: 30*24*60*60*1000,
                 secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
