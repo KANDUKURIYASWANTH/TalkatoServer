@@ -30,6 +30,7 @@ const authCtrl={
                 httpOnly:true,
                 path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
+                domain: 'talkato.web.app',
                 //secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
             })
@@ -63,6 +64,7 @@ const authCtrl={
                 httpOnly:true,
                 path: '/api/refresh_token',
                 maxAge: 30*24*60*60*1000,
+                domain: 'talkato.web.app',
                 //secure: true, // Set to true if you want to restrict to HTTPS only
                 sameSite: 'none'
             })
